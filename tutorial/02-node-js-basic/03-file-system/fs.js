@@ -10,7 +10,6 @@ fs.readFile('./docs/blog.txt', (err, data) => {
   console.log(data.toString());
 });
 
-
 // write file
 fs.writeFile('./docs/blog2.txt', 'hello, blog2.txt', () => {
   console.log('finish write file');
