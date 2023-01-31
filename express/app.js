@@ -8,6 +8,7 @@ app.listen(3000);
 // routing
 // app.get('/', (req, res) => {
 //   res.send('<p>hellloooooo</p>')
+// res.send itu gabungan dari res.write(data) sama res.end()
 // });
 
 app.get('/', (req, res) => {
