@@ -21,6 +21,10 @@ const server = http.createServer((req, res) => {
       res.statusCode = 200;
       break;
       // oh jadi kalau gak di break mah bisa aja jadi /blog.html/404.html
+    case '/about-me':
+      res.statusCode = 301;
+      res.setHeader('Location', '/about');
+      break;
     default:
       path += '/404.html';
       res.statusCode = 404;
