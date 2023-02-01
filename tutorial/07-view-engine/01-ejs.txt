@@ -1,0 +1,17 @@
+malah siga php nya? 
+hahaha ....
+
+lamun php mah 
+    <?php ... ?>
+
+ejs 
+    <% ... %>
+
+kalau buat echo di php buat ngerender views kan bisa gini :
+    <?php echo '...' ?>
+    atau 
+    <?= ?>
+
+kalau ejs mirip juga 
+    <%= ... %>
+
