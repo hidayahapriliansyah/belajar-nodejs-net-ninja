@@ -11,25 +11,36 @@ app.listen(3000);
 // res.send itu gabungan dari res.write(data) sama res.end()
 // });
 
+// register view engine
+app.set('view engine', 'ejs');
+// app.set('views', './myviews');
+// untuk mengganti folder views bisa menggunakan app.set('views', 'directory');
+
 app.get('/', (req, res) => {
-  res.sendFile('./views/index.html', { root: __dirname });
+  // res.sendFile('./views/index.html', { root: __dirname });
+  // res.render akan merender file ejs.
+  // path akan langsung mengarah ke folder views
+  // folder views merupakan folder defaul tempat menyimpan file ejs
+  res.render('index');
 });
 
 app.get('/about', (req, res) => {
-  res.sendFile('./views/about.html', { root: __dirname });
+  // res.sendFile('./views/about.html', { root: __dirname });
+  res.render('about');
 });
 
 app.get('/blog', (req, res) => {
-  res.sendFile('./views/blog.html', { root: __dirname });
+  // res.sendFile('./views/blog.html', { root: __dirname });
+  res.render('blogs');
 });
 
 // redirect
-app.get('/about-me', (req, res) => {
-  res.redirect('/about');
-});
+// app.get('/about-me', (req, res) => {
+//   res.redirect('/about');
+// });
 
 // 404 not found
 app.use((req, res) => {
-  res.status(404).sendFile('./views/404.html', { root: __dirname });
+  // res.status(404).sendFile('./views/404.html', { root: __dirname });
+  res.status(404).render('404');
 });
-
