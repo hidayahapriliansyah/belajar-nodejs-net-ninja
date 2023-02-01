@@ -34,7 +34,7 @@ app.get('/about', (req, res) => {
   res.render('about', { title: 'About' });
 });
 
-app.get('/blog/create', (req, res) => {
+app.get('/blogs/create', (req, res) => {
   // res.sendFile('./views/blog.html', { root: __dirname });
   res.render('create', { title: 'New Blog' });
 });
