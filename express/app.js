@@ -1,9 +1,31 @@
 const express = require('express');
+const morgan = require('morgan');
 
 const app = express();
 
 // listening port
 app.listen(3000);
+
+// middleware 
+// app.use((req, res, next) => {
+//   console.log('new request was made');
+//   console.log(req.hostname);
+//   console.log(req.path);
+//   console.log(req.method);
+//   next();
+// });
+
+// app.use((req, res, next) => {
+//   console.log('next middleware');
+//   next();
+// });
+
+// middleware & static file
+app.use(express.static('public'));
+
+app.use(morgan('dev'));
+// app.use(morgan('tiny'));
+
 
 // routing
 // app.get('/', (req, res) => {
