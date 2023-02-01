@@ -4,9 +4,24 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EJS 404</title>
+  <title>Blog Ninjas | <%= title %> </title>
 </head>
 <body>
-  <h1>Ejs 404</h1>
+  <nav>
+    <div class="site-title">
+      <h1><a href="/">Blog Ninjas</a></h1>
+      <p>A Net Ninja Site</p>
+    </div>
+    <ul>
+      <li><a href="/">Blogs</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/blog/create">New Blog</a></li>
+    </ul>
+  </nav>
+
+  <div class="not-found content">
+    <h2>404</h2>
+    <p>Oops! Page Not Found</p>
+  </div>
 </body>
 </html>

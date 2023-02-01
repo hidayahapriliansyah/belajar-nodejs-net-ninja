@@ -21,17 +21,22 @@ app.get('/', (req, res) => {
   // res.render akan merender file ejs.
   // path akan langsung mengarah ke folder views
   // folder views merupakan folder defaul tempat menyimpan file ejs
-  res.render('index');
+  const blogs = [
+    { title: 'Blog1', snippet: 'Lorem ipsum dolor sit amet' },
+    { title: 'Blog2', snippet: 'Lorem ipsum dolor sit amet' },
+    { title: 'Blog3', snippet: 'Lorem ipsum dolor sit amet' },
+  ];
+  res.render('index', { title: 'Home', blogs });
 });
 
 app.get('/about', (req, res) => {
   // res.sendFile('./views/about.html', { root: __dirname });
-  res.render('about');
+  res.render('about', { title: 'About' });
 });
 
-app.get('/blog', (req, res) => {
+app.get('/blog/create', (req, res) => {
   // res.sendFile('./views/blog.html', { root: __dirname });
-  res.render('blogs');
+  res.render('create', { title: 'New Blog' });
 });
 
 // redirect
@@ -42,5 +47,5 @@ app.get('/blog', (req, res) => {
 // 404 not found
 app.use((req, res) => {
   // res.status(404).sendFile('./views/404.html', { root: __dirname });
-  res.status(404).render('404');
+  res.status(404).render('404', { title: 'Oops!' });
 });
