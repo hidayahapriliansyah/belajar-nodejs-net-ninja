@@ -1,0 +1,2 @@
+kalau redirect pakai / contoh '/404' maka itu absolute path.
+kalau langsung '404' itu relative path.

@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const Blog = require('./models/blog');
+const { response } = require('express');
 
 const app = express();
 
@@ -34,6 +35,7 @@ app.use(express.static('public'));
 
 app.use(morgan('dev'));
 // app.use(morgan('tiny'));
+app.use(express.urlencoded());
 
 
 // routing
@@ -87,9 +89,43 @@ app.get('/blogs', (req, res) => {
     });
 });
 
+app.post('/blogs', (req, res) => {
+  const blog = new Blog(req.body);
+  
+  blog.save()
+    .then((result) => {
+      res.redirect('/blogs');
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+app.delete('/blogs/:id', (req, res) => {
+  Blog.findByIdAndDelete(req.params.id)
+    .then((result) => {
+      res.json({ redirect: '/blogs' });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 app.get('/blogs/create', (req, res) => {
   // res.sendFile('./views/blog.html', { root: __dirname });
   res.render('create', { title: 'New Blog' });
+});
+
+app.get('/blogs/:id', (req, res) => {
+  Blog.findById(req.params.id)
+    .then((result) => {
+      res.render('details', { blog: result, title: result.title });
+    })
+    .catch((err) => {
+      res.status(404).render('404', { title: 'Oops!' });
+      // bedanya kalau pakai /itu absolute path, kalau gak relative
+      console.log(err);
+    });
 });
 
 // redirect
@@ -98,6 +134,7 @@ app.get('/blogs/create', (req, res) => {
 // });
 
 // 404 not found
+
 app.use((req, res) => {
   // res.status(404).sendFile('./views/404.html', { root: __dirname });
   res.status(404).render('404', { title: 'Oops!' });
